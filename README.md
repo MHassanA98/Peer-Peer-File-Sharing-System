@@ -55,7 +55,7 @@ appropriate values.
     
     i. **backUpFiles**: Files saved as back up on this node
 
-2.**join()** :
+2. **join()** :
 
 This function handles the logic for a new node joining the DHT: this function should update
 node’s successor and predecessor. It should also trigger the update of affected nodes’ (i.e.

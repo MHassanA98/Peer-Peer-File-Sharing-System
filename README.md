@@ -197,3 +197,6 @@ You should pass a port between 1000 and 65500. If you start getting an error lik
 **error: [Errno 48] Address already in use**
 
 Just choose a different port number with a significant gap. Or alternatively, restart the terminal.
+
+
+***If you believe something needs to be changed in my code, you may create a pull request. I'd be glad to review your suggested change*** 😄

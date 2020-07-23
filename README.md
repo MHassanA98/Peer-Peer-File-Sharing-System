@@ -127,6 +127,12 @@ the logic of updating the predecessor. This usually happens through pinging; a n
 successor node has updated its predecessor, this node should update its successor to the current
 successor’s predecessor. The joining process is explained through the figures below.
 
+[image](images/DHT_Join.png)
+
+<div align="center">
+    <img src="/images/DHT_Join.png" width="400px"</img> 
+</div>
+
 You should pay special attention to corner cases such as when there is only one node in the system;
 in this case, instead of the joining address, an empty string will be passed. Similarly, when there are
 only two nodes, they will be each other’s successor and predecessor.

@@ -37,66 +37,66 @@ variables which are already declared should not be renamed and should be set app
 since testing will take place through them. Some of them have already been set to
 appropriate values.
 
-    a. host: Save hostname of Node e.g. localhost
+    a. **host**: Save hostname of Node e.g. localhost
 
-    b. port: Save port of Node e.g. 8000
+    b. **port**: Save port of Node e.g. 8000
 
-    c. M: hash value’s number of bits
+    c. **M**: hash value’s number of bits
     
-    d. N: Size of the ring
+    d. **N**: Size of the ring
     
-    e. key: it is the hashed value of Node
+    e. **key**: it is the hashed value of Node
     
-    f. successor: Next node’s address (host, port)
+    f. **successor**: Next node’s address (host, port)
     
-    g. predecessor: Previous node’s address (host, port)
+    g. **predecessor**: Previous node’s address (host, port)
     
-    h. files: Files mapped to this node
+    h. **files**: Files mapped to this node
     
-    i. backUpFiles: Files saved as back up on this node
+    i. **backUpFiles**: Files saved as back up on this node
 
-2. join() :
+2.**join()** :
 
 This function handles the logic for a new node joining the DHT: this function should update
 node’s successor and predecessor. It should also trigger the update of affected nodes’ (i.e.
 successor node and predecessor node) successor and predecessor too. Finally, the node
 should also get its share of files.
 
-3. leave() :
+3. **leave()** :
 
 Calling leave should have the following effects: removal of node from the ring and transfer
 of files to the appropriate node.
 
-4. put() :
+4. **put()** :
 
 This function should handle placement of file on appropriate node; save the files in the
 directory for the node.
 
-5. get() :
+5. **get()** :
 
 This function is responsible for looking up and getting a file from the network.
 
 Some functions have already been provided to you as utility functions. You can also create more
 helper functions.
 
-1. hasher() :
+1. **hasher()** :
 Hashes a string to an M bits long number. You should use it as follows:
 
     i. For a node: hasher(node.host+str(node.port))
 
     ii. For a file: hasher(filename)
 
-2. listener() :
+2. **listener()** :
 
 This function listens for new incoming connections. For every new connection, it spins a new
 thread handleConnection to handle that connection. You may write any necessary logic for
 any connection there.
 
-3. sendFile() :
+3. **sendFile()** :
 
 You can use this function to send a file over the socket to another node.
 
-4. receiveFile() :
+4. **receiveFile()** :
 
 This function can be used to receive files over the socket from other nodes. Both these
 functions have the following arguments:
@@ -127,10 +127,8 @@ the logic of updating the predecessor. This usually happens through pinging; a n
 successor node has updated its predecessor, this node should update its successor to the current
 successor’s predecessor. The joining process is explained through the figures below.
 
-[image](images/DHT_Join.png)
-
-<div align="center">
-    <img src="/images/DHT_Join.png" width="400px"</img> 
+<div align="center" >
+    <img src="/image/DHT_Join.png" width="700px"</img> 
 </div>
 
 You should pay special attention to corner cases such as when there is only one node in the system;
@@ -151,6 +149,10 @@ filename, if it does not you should return None.
 
 Every node is responsible for the space between itself and its predecessor, See the following figure
 for a better understanding.
+
+<div align="center" >
+    <img src="/image/DHT_PutGet.png" width="700px"</img> 
+</div>
 
 ### 4 - File Transfer on Join:
 
@@ -181,3 +183,17 @@ successor instead of keeping a list of successors for this assignment. Next you 
 the files so that even if a node fails, no data is lost. Think about where you should replicate files? At
 the predecessor of the node? At the successor? At the start of the DHT.py file mention where you
 replicated files and argue why.
+
+## Running and Testing
+Test cases are run in the order described here. You may not be able to test one part before
+completing its previous parts as most of the parts have previous parts as their pre-requisite. You will
+need Python3 to run this file, you can run the tests on any OS but Linux preferable. Use the
+following command to run the tests:
+
+**python3 check.py <port>**
+
+You should pass a port between 1000 and 65500. If you start getting an error like:
+
+**error: [Errno 48] Address already in use**
+
+Just choose a different port number with a significant gap. Or alternatively, restart the terminal.
